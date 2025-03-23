@@ -26,3 +26,45 @@ Virtual Environment (recommended)
 Setup
 
 Clone the repository:
+git clone https://github.com/your-username/llm-booking-analytics.git
+cd llm-booking-analytics
+
+Create a virtual environment and activate it:
+
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+venv\Scripts\activate    # Windows
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+Usage
+
+1️⃣ Start the API Server
+
+Run the FastAPI server with Uvicorn:
+
+uvicorn api:app --host 127.0.0.1 --port 8000 --reload
+
+2️⃣ API Endpoints
+
+Analytics API
+
+Endpoint: POST /analytics
+
+Description: Returns revenue trends, cancellation rates, and geographical distribution.
+
+Example Request (PowerShell):
+
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/analytics" -Method POST
+
+Question Answering API
+
+Endpoint: POST /ask
+
+Description: Answers queries based on booking data using RAG.
+
+Example Request (PowerShell):
+
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/ask" -Method POST -Body (@{ query = "What is the cancellation rate?" } | ConvertTo-Json) -ContentType "application/json"
